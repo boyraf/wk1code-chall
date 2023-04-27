@@ -6,13 +6,7 @@ function App({ onAddTransaction }) {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/transactions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(transactionData),
-    })
+    fetch("http://localhost:3000/transactions")
       .then((r) => r.json())
       .then((newTransaction) => onAddTransaction(newTransaction));
   }, []);
