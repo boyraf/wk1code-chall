@@ -26,17 +26,23 @@ function Table() {
             <th>Category</th>
             <th>Amount</th>
           </tr>
-          {transactions.map((transaction) => {
-            return (
-              <TableList
-                key={transaction.id}
-                date={transaction.date}
-                description={transaction.description}
-                category={transaction.category}
-                amount={transaction.amount}
-              />
-            );
-          })}
+          {transactions.length > 0 ? (
+            transactions.map((transaction) => {
+              return (
+                <TableList
+                  key={transaction.id}
+                  date={transaction.date}
+                  description={transaction.description}
+                  category={transaction.category}
+                  amount={transaction.amount}
+                />
+              );
+            })
+          ) : (
+            <tr>
+              <td colSpan="4">No transactions found.</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
