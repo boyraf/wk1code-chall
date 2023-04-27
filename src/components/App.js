@@ -3,12 +3,12 @@ import Table from "./Table";
 import Form from "./Form";
 
 function App({ onAddTransaction }) {
-  const [transactions, setTransactions] = useState([]);
+  //const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/transactions")
       .then((r) => r.json())
-      .then((newTransaction) => onAddTransaction(newTransaction));
+      .then((transactions) => onAddTransaction(transactions));
   }, []);
 
   return (
