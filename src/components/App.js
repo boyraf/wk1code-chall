@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Table from "./Table";
 import Form from "./Form";
 
-function App({ onAddTransaction }) {
+function App({  }) {
   //const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/transactions")
       .then((r) => r.json())
-      .then((transactions) => onAddTransaction(transactions));
+      .then((transactions) => data(transactions));
   }, []);
 
   return (
