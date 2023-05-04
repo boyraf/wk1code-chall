@@ -1,16 +1,16 @@
 import React from 'react';
-import TransactionList from './TableList';
-import TransactionTable from './Table';
-import Addform from './Form';
+import TableList from './TableList';
+import Table from './Table';
+import Form from './Form';
 import '../App.css';
 
 function App() {
   return (
     <div>
       <h1 id="vin">MTransactions!!</h1>
-      <Addform />
-      <TransactionList />
-      <TransactionTable/>
+      <Form />
+      <TableList />
+      <Table/>
     </div>
   );
 }

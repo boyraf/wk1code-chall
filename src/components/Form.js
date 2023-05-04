@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-const Addform = () => {
+const Form = () => {
 
 const[date, setDate] = useState("");
 const[description, setDescription]=useState(""); 
@@ -21,7 +21,7 @@ const newtransaction = {
 
 console.log(newtransaction);
 
-fetch("http://localhost:3000/transactions", {
+fetch("https://react-40re.onrender.com/transactions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -91,4 +91,4 @@ fetch("http://localhost:3000/transactions", {
   )
 }
 
-export default Addform;
+export default Form;

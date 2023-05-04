@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-const TransactionTable = ({ transactions, onDelete }) => {
+const Table = ({ transactions, onDelete }) => {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [filteredTransactions, setFilteredTransactions] = useState([]);
 
@@ -25,7 +25,7 @@ const TransactionTable = ({ transactions, onDelete }) => {
 
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/transactions/${id}`, {
+    fetch(`https://react-40re.onrender.com/transactions/${id}`, {
       method: 'DELETE',
     })
       .then(() => {
@@ -91,7 +91,7 @@ const App = () => {
     <div>
       
       {transactions.length > 0 ? (
-        <TransactionTable transactions={transactions} />
+        <Table transactions={transactions} />
       ) : (
         <p>Loading...</p>
       )}
