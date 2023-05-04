@@ -21,7 +21,7 @@ const newtransaction = {
 
 console.log(newtransaction);
 
-fetch("https://react-40re.onrender.com/transactions", {
+fetch("http://localhost:3000/transactions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
