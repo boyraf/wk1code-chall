@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import TableList from "./TableList";
-import Form from "./Form";
 
 function Table() {
   const [transactions, setNew] = useState([]);
@@ -15,7 +14,7 @@ function Table() {
 
   return (
     <div>
-      <Form />
+      
       <br />
       <br />
       <table>

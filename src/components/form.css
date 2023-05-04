@@ -1,0 +1,49 @@
+/* Apply styles to the form element */
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+  }
+  
+  /* Apply styles to the label elements */
+  label {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Apply styles to the input elements */
+  input[type="date"],
+  input[type="text"],
+  input[type="number"],
+  input[type="submit"] {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Apply styles to the submit button */
+  input[type="submit"] {
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Apply styles to the select element */
+  select {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  

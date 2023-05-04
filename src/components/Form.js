@@ -1,6 +1,6 @@
 import React from "react";
 import Category from "./Category";
-
+import './form.css'
 function Form() {
   function handleAdd(event) {
     event.preventDefault();
@@ -8,7 +8,7 @@ function Form() {
   }
 
   return (
-    <form onSubmit={handleAdd}>
+    <form id="form" onSubmit={handleAdd}>
       <label>Date</label>
       <input type="date" />
       <br />
