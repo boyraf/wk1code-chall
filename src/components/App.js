@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
-import Table from "./Table";
-import Form from "./Form";
+import React from 'react';
+import TransactionList from './components/TransactionList';
+import TransactionTable from './components/TransactionTable';
+
+import './App.css';
+import Addform from './components/AddForm';
 
 function App() {
-  const [transactions, setTransactions] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/transactions")
-      .then((r) => r.json())
-      .then((data) => setTransactions(data));
-  }, []);
-
   return (
     <div>
-      <Table transactions={transactions} />
-      <Form />
+      <h1 id="vin">MTransactions!!</h1>
+      <Addform />
+      <TransactionList />
+      <TransactionTable/>
     </div>
   );
 }

@@ -1,51 +1,102 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import TableList from "./TableList";
+import React, { useState, useEffect } from "react";
 
-function Table() {
-  const [transactions, setNew] = useState([]);
+
+const TransactionTable = ({ transactions, onDelete }) => {
+  const [categoryFilter, setCategoryFilter] = useState("");
+  const [filteredTransactions, setFilteredTransactions] = useState([]);
 
   useEffect(() => {
-    const url = "http://localhost:3000/transactions";
-    fetch(url)
-      .then((res) => res.json())
-      .then((transactions) => setNew(transactions));
-  }, []);
+    if (categoryFilter === "") {
+      setFilteredTransactions(transactions);
+    } else {
+      setFilteredTransactions(
+        transactions.filter((transaction) => {
+          return transaction.category === categoryFilter;
+        })
+      );
+    }
+  }, [categoryFilter, transactions]);
+
+  const handleChange = (event) => {
+    setCategoryFilter(event.target.value);
+  };
+
+
+
+
+  const handleDelete = (id) => {
+    fetch(`https://react-40re.onrender.com/transactions/${id}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        onDelete(id);
+      })
+      .catch(error => console.error(error));
+  };
+
 
   return (
     <div>
-      
-      <br />
-      <br />
+      <label htmlFor="category">Filter by Category: </label>
+      <select id="category" value={categoryFilter} onChange={handleChange}>
+        <option value="">All</option>
+        <option value="Income">Income</option>
+        <option value="Food">Food</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Gift">Gift</option>
+        <option value="Transportation">Transportation</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Housing">Housing</option>
+      </select>
+
       <table>
-        <tbody>
+        <thead>
           <tr>
             <th>Date</th>
             <th>Description</th>
             <th>Category</th>
             <th>Amount</th>
           </tr>
-          {transactions.length > 0 ? (
-            transactions.map((transaction) => {
-              return (
-                <TableList
-                  key={transaction.id}
-                  date={transaction.date}
-                  description={transaction.description}
-                  category={transaction.category}
-                  amount={transaction.amount}
-                />
-              );
-            })
-          ) : (
-            <tr>
-              <td colSpan="4">No transactions found.</td>
+        </thead>
+        <tbody>
+          {filteredTransactions.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{transaction.date}</td>
+              <td>{transaction.description}</td>
+              <td>{transaction.category}</td>
+              <td>{transaction.amount}</td>
+              <td><button onClick={() => handleDelete(transaction.id)}>Delete</button></td>
             </tr>
-          )}
+          ))}
         </tbody>
       </table>
     </div>
   );
-}
+};
 
-export default Table;
+const App = () => {
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    // simulate fetching data from an API
+    const fetchData = async () => {
+      const response = await fetch("transactions.json");
+      const data = await response.json();
+      setTransactions(data.transactions);
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      
+      {transactions.length > 0 ? (
+        <TransactionTable transactions={transactions} />
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
+};
+
+export default App;
