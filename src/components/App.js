@@ -2,7 +2,7 @@ import React from 'react';
 import TransactionList from './components/TransactionList';
 import TransactionTable from './components/TransactionTable';
 import Addform from './components/AddForm';
-import './App.css';
+import '../App.css';
 
 function App() {
   return (
