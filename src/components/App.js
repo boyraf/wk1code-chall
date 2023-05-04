@@ -1,7 +1,7 @@
 import React from 'react';
-import TransactionList from './components/TransactionList';
-import TransactionTable from './components/TransactionTable';
-import Addform from './components/AddForm';
+import TransactionList from './TableList';
+import TransactionTable from './Table';
+import Addform from './Form';
 import '../App.css';
 
 function App() {
